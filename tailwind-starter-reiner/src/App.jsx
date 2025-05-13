@@ -1,41 +1,46 @@
-// Hauptdatei: src/App.jsx
 import React from "react";
-import { Card, CardContent } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
 
 export default function App() {
   return (
-    <main className="p-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 bg-gray-100 min-h-screen">
-      <Card>
-        <CardContent className="p-6 flex flex-col items-center">
-          <h2 className="text-xl font-bold mb-4">📋 Auftragsplanung</h2>
-          <Button onClick={() => alert("Modul geöffnet: Auftragsplanung")}>Öffnen</Button>
-        </CardContent>
-      </Card>
-      <Card>
-        <CardContent className="p-6 flex flex-col items-center">
-          <h2 className="text-xl font-bold mb-4">📦 Lager</h2>
-          <Button onClick={() => alert("Modul geöffnet: Lager")}>Öffnen</Button>
-        </CardContent>
-      </Card>
-      <Card>
-        <CardContent className="p-6 flex flex-col items-center">
-          <h2 className="text-xl font-bold mb-4">📊 Statistik</h2>
-          <Button onClick={() => alert("Modul geöffnet: Statistik")}>Öffnen</Button>
-        </CardContent>
-      </Card>
-      <Card>
-        <CardContent className="p-6 flex flex-col items-center">
-          <h2 className="text-xl font-bold mb-4">📁 Dokumente</h2>
-          <Button onClick={() => alert("Modul geöffnet: Dokumente")}>Öffnen</Button>
-        </CardContent>
-      </Card>
-      <Card>
-        <CardContent className="p-6 flex flex-col items-center">
-          <h2 className="text-xl font-bold mb-4">🔧 Einstellungen</h2>
-          <Button onClick={() => alert("Modul geöffnet: Einstellungen")}>Öffnen</Button>
-        </CardContent>
-      </Card>
+    <main style={{
+      display: "grid",
+      gridTemplateColumns: "repeat(auto-fit, minmax(250px, 1fr))",
+      gap: "20px",
+      padding: "40px",
+      background: "#f1f5f9",
+      minHeight: "100vh",
+      fontFamily: "sans-serif"
+    }}>
+      {[
+        "📋 Auftragsplanung",
+        "📦 Lager",
+        "📊 Statistik",
+        "📁 Dokumente",
+        "🔧 Einstellungen"
+      ].map((title, i) => (
+        <div key={i} style={{
+          background: "#fff",
+          padding: "20px",
+          borderRadius: "16px",
+          boxShadow: "0 4px 6px rgba(0,0,0,0.1)",
+          textAlign: "center"
+        }}>
+          <h2 style={{ fontSize: "18px", marginBottom: "12px" }}>{title}</h2>
+          <button
+            style={{
+              backgroundColor: "#2563eb",
+              color: "#fff",
+              padding: "10px 20px",
+              border: "none",
+              borderRadius: "8px",
+              cursor: "pointer"
+            }}
+            onClick={() => alert(`Modul geöffnet: ${title}`)}
+          >
+            Öffnen
+          </button>
+        </div>
+      ))}
     </main>
   );
 }
